@@ -12,6 +12,7 @@ const { verifyEmailConfig } = require('./utils/emailService');
 
 // Import routes
 const authRoutes = require('./routes/auth');
+const lostAndFoundRoutes = require('./routes/lostAndFoundRoutes');
 
 // Import middleware
 const { generalRateLimiter } = require('./middleware/rateLimiter');
@@ -84,6 +85,8 @@ app.get('/health', (req, res) => {
 
 // API Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/lost', lostAndFoundRoutes);
+router.put('/:id/claim', claimItem); 
 
 // ✅ Fixed 404 handler (safe with path-to-regexp)
 app.use((req, res) => {
